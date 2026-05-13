@@ -8,7 +8,96 @@
       name="description"
       content="Consultora de marketing B2B para SaaS de IA. Claridad, contenido de autoridad y CRO para convertir visitas en demos cualificadas."
     />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kathyweb.vercel.app/" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kathyweb.vercel.app/" />
+    <meta property="og:title" content="Kathy Web | Marketing de conversion para SaaS de IA" />
+    <meta
+      property="og:description"
+      content="Consultora de marketing B2B para SaaS de IA. Claridad, contenido de autoridad y CRO para convertir visitas en demos cualificadas."
+    />
+    <meta property="og:image" content="https://kathyweb.vercel.app/og-image.jpg" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Kathy Web" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://kathyweb.vercel.app/" />
+    <meta name="twitter:title" content="Kathy Web | Marketing de conversion para SaaS de IA" />
+    <meta
+      name="twitter:description"
+      content="Consultora de marketing B2B para SaaS de IA. Claridad, contenido de autoridad y CRO para convertir visitas en demos cualificadas."
+    />
+    <meta name="twitter:image" content="https://kathyweb.vercel.app/og-image.jpg" />
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    
     <link rel="stylesheet" href="styles.css" />
+    
+    <!-- Schema Markup - JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Kathy Web",
+      "alternateName": "KW",
+      "url": "https://kathyweb.vercel.app/",
+      "logo": "https://kathyweb.vercel.app/favicon.svg",
+      "description": "Consultora de marketing B2B para SaaS de IA. Claridad, contenido de autoridad y CRO para convertir visitas en demos cualificadas.",
+      "image": "https://kathyweb.vercel.app/og-image.jpg",
+      "sameAs": [
+        "https://github.com/katysantacruztradu-boop/kathyweb"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PE"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Global"
+      },
+      "priceRange": "$$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Marketing B2B",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Posicionamiento para SaaS de IA",
+              "description": "ICP y propuesta de valor, mensajes por segmento, claims, objeciones y narrativa comercial."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web para demos cualificadas",
+              "description": "Auditoria UX/CRO, copy de paginas clave, CTAs, formularios y medicion."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Contenido SEO + IA",
+              "description": "Clusters MOFU y BOFU, comparativas y guias de compra, recursos preparados para citabilidad."
+            }
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -273,7 +362,7 @@
             confianza o conversion.
           </p>
         </div>
-        <form class="diagnosis-form" action="mailto:hola@kathyweb.com" method="post" enctype="text/plain">
+        <form class="diagnosis-form" id="diagnosisForm" novalidate>
           <label>
             Nombre
             <input name="nombre" type="text" required />
@@ -315,7 +404,8 @@
             Objetivo de los proximos 90 dias
             <textarea name="objetivo" rows="4" required></textarea>
           </label>
-          <button class="button primary light-button" type="submit">Enviar para revision</button>
+          <button class="button primary light-button" type="submit" id="formSubmitBtn">Enviar para revision</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
         </form>
       </section>
     </main>
