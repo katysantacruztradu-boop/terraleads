@@ -68,15 +68,10 @@ img {
   letter-spacing: 0;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  color: var(--white);
-  background: var(--green-dark);
-  border-radius: 8px;
-  font-size: 0.85rem;
+.brand-logo {
+  display: block;
+  width: clamp(170px, 18vw, 230px);
+  height: auto;
 }
 
 .nav {
