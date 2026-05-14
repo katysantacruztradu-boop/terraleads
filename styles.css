@@ -70,8 +70,8 @@ img {
 
 .brand-logo {
   display: block;
-  width: clamp(170px, 18vw, 230px);
-  height: auto;
+  width: auto;
+  height: clamp(42px, 5vw, 54px);
 }
 
 .nav {
