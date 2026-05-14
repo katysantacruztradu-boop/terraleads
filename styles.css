@@ -260,13 +260,26 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
-.trust-strip span {
+.trust-label {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-right: 8px;
+}
+
+.trust-strip span:not(.trust-label) {
   padding: 8px 14px;
   color: var(--green-dark);
   background: #edf4ef;
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 750;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trust-strip span:not(.trust-label):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 111, 79, 0.15);
 }
 
 .section {
