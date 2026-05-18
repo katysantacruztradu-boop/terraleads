@@ -33,100 +33,74 @@ document.querySelector("#roiForm").addEventListener("submit", (event) => {
 
 calculateOpportunity();
 
-// Form submission handler for diagnosis form
-const diagnosisForm = document.getElementById("diagnosisForm");
-const formSubmitBtn = document.getElementById("formSubmitBtn");
-const formStatus = document.getElementById("formStatus");
+const diagnosisForm = document.querySelector("#diagnosisForm");
+const formSubmitBtn = document.querySelector("#formSubmitBtn");
+const formStatus = document.querySelector("#formStatus");
 
 if (diagnosisForm) {
-  diagnosisForm.addEventListener("submit", async (event) => {
+  diagnosisForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    
-    // Basic validation
+
     if (!diagnosisForm.checkValidity()) {
       formStatus.textContent = "Por favor completa todos los campos requeridos.";
       formStatus.style.color = "#c35d45";
       return;
     }
-    
-    // Show loading state
+
     formSubmitBtn.disabled = true;
-    formSubmitBtn.textContent = "Enviando...";
     formStatus.textContent = "";
-    
-    // Collect form data
-    const formData = new FormData(diagnosisForm);
-    const data = Object.fromEntries(formData.entries());
-    
-    // IMPORTANT: Replace with your Formspree endpoint or other form service
-    // Example: https://formspree.io/f/YOUR_FORM_ID
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-    
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-      
-      if (response.ok) {
-        formStatus.textContent = "¡Gracias! Tu solicitud ha sido enviada. Te contactaremos pronto.";
-        formStatus.style.color = "#0f6f4f";
-        diagnosisForm.reset();
-      } else {
-        throw new Error("Error al enviar");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      formStatus.textContent = "Hubo un error al enviar. Por favor intenta nuevamente o escribe directamente a hola@kathyweb.com";
-      formStatus.style.color = "#c35d45";
-    } finally {
-      formSubmitBtn.disabled = false;
-      formSubmitBtn.textContent = "Enviar para revision";
-    }
+
+    const data = Object.fromEntries(new FormData(diagnosisForm).entries());
+    const body = [
+      `Nombre: ${data.nombre}`,
+      `Email: ${data.email}`,
+      `Empresa: ${data.empresa}`,
+      `Web: ${data.web}`,
+      `Trafico mensual: ${data.trafico}`,
+      `Principal problema: ${data.problema}`,
+      `Objetivo 90 dias: ${data.objetivo}`,
+    ].join("\n");
+
+    window.location.href =
+      `mailto:hola@leadsterra.com?subject=${encodeURIComponent("Diagnostico de conversion")}&body=${encodeURIComponent(body)}`;
+
+    formStatus.textContent = "Se abrirá tu cliente de email para enviar la solicitud.";
+    formStatus.style.color = "#0f6f4f";
+    formSubmitBtn.disabled = false;
   });
 }
 
-// Add smooth scroll behavior for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute("href");
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      const headerOffset = 72;
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const targetElement = document.querySelector(anchor.getAttribute("href"));
+    if (!targetElement) return;
+
+    const headerOffset = 72;
+    const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
   });
 });
 
-// Add active section indicator in navigation
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav a");
 
 function updateActiveNav() {
   const scrollPosition = window.scrollY + 100;
-  
-  sections.forEach(section => {
+
+  sections.forEach((section) => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.offsetHeight;
     const sectionId = section.getAttribute("id");
-    
+
     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-      navLinks.forEach(link => {
-        link.style.color = "";
-        if (link.getAttribute("href") === `#${sectionId}`) {
-          link.style.color = "var(--green)";
-        }
+      navLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("href") === `#${sectionId}`);
       });
     }
   });

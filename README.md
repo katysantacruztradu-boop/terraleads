@@ -1,4 +1,4 @@
-# Kathy Web - Consultora de Marketing para SaaS de IA
+# TerraLeads - Consultora de Marketing para SaaS de IA
 
 Proyecto local para desarrollar el sitio web, estrategia de contenido y sistema de conversiones de una consultora de marketing B2B especializada en empresas SaaS de IA.
 

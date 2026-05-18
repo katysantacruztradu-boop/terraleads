@@ -81,6 +81,7 @@ img {
 }
 
 .nav a:hover,
+.nav a.is-active,
 .site-footer a:hover {
   color: var(--green);
 }
@@ -532,7 +533,6 @@ textarea {
   margin: 0;
 }
 
-/* Form status message */
 .form-status {
   grid-column: 1 / -1;
   margin: 8px 0 0;
@@ -541,7 +541,6 @@ textarea {
   text-align: center;
 }
 
-/* Focus states for accessibility */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -552,7 +551,6 @@ textarea:focus-visible {
   border-radius: 4px;
 }
 
-/* Hover transitions */
 .nav a,
 .button,
 .header-cta,
@@ -584,7 +582,6 @@ textarea:focus-visible {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Loading state for buttons */
 .button:disabled {
   opacity: 0.7;
   cursor: not-allowed;

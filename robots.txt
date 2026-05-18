@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://kathyweb.vercel.app/sitemap.xml
+Sitemap: https://terraleads.vercel.app/sitemap.xml
