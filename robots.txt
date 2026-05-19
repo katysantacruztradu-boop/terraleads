@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://terraleads.vercel.app/sitemap.xml
+Sitemap: https://terraleads-five.vercel.app/sitemap.xml
